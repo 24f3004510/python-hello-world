@@ -1,3 +1,14 @@
 {
-  "redirects": [{ "source": "/", "destination": "/api" }]
+  "redirects": [{ "source": "/", "destination": "/api" }],
+  "routes": [
+    {
+      "src": "/api",
+      "methods": ["GET"],
+      "dest": "/api/index.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+    
+  ]
 }
