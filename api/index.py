@@ -9,10 +9,7 @@ class handler(BaseHTTPRequestHandler):
         data = file.read()
         data = json.loads(data)
         file.close()
-
-
-
-       # Parse the URL
+        # Parse the URL
         parsed_url = urlparse(self.path)
 
         # Extract query parameters
