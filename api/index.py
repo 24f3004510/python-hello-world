@@ -4,6 +4,13 @@ from urllib.parse import urlparse, parse_qs
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
+        # read the data file
+        file = open('q-vercel-python.json', 'r')
+        data = file.read()
+        file.close()
+
+
+
        # Parse the URL
         parsed_url = urlparse(self.path)
 
@@ -14,8 +21,10 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         response_body = "Request Parameters:\n"
-        
+
         for key, value in query_params.items():
             response_body += f"{key}: {value}\n"
+
+        response_body += f"\nData from file:\n {data}"
         self.wfile.write(response_body.encode('utf-8'))
         return
